@@ -67,7 +67,7 @@ CONCURRENT_REQUESTS_PER_IP = 16
 ITEM_PIPELINES = {
     #  'news.pipelines.NewsPipeline': 300,
     'news.pipelines.MongoPipeline': 300,
-    'crawlab.pipelines.CrawlabMongoPipeline': 888  # uncomment when use with Crawlab
+    # 'crawlab.pipelines.CrawlabMongoPipeline': 888  # uncomment when use with Crawlab
 }
 # production
 MONGO_URI = 'mongodb://172.18.0.2:27017'

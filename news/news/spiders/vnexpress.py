@@ -34,6 +34,10 @@ class VnexpressSpider(scrapy.Spider):
 
         metaTags = response.css('meta[name="its_tag"]').re(
             r'content="(.*)"')
+        if len(metaTags) > 0:
+            tags = [x.strip() for x in metaTags[0].split(',')]
+        else:
+            tags = ''
 
         metaDate = response.css('.header-content .date::text').re(
             r'([0-9]{,2}\/[0-9]{,2}\/[0-9]{4}, [0-9]{,2}:[0-9]{,2})')
@@ -46,7 +50,7 @@ class VnexpressSpider(scrapy.Spider):
             'body': ''.join(response.css('.Normal::text').getall()[:-2]),
             'cates': response.css(
                 '.header-content.width_common > ul > li a::text').getall(),
-            'tags': [x.strip() for x in metaTags[0].split(',')],
+            'tags': tags,
             'publish': datetime.datetime.strptime(
                 metaDate[0], '%d/%m/%Y, %H:%M')
         }

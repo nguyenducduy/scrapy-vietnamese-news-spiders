@@ -110,9 +110,18 @@ class ThanhnienSpider(scrapy.Spider):
         metaDescription = response.css(
             'meta[name="description"]').re(r'content="(.*)"')
 
-        metaTags = response.css('meta[name="keywords"]').re(r'content="(.*)"')
+        if len(metaDescription) > 0:
+            sapo = metaDescription[0]
+        else:
+            sapo = ''
 
-        body = response.css('#abody.cms-body.detail div').getall()
+        metaTags = response.css('meta[name="keywords"]').re(r'content="(.*)"')
+        if len(metaTags) > 0:
+            tags = [x.strip() for x in metaTags[0].split(',')]
+        else:
+            tags = ''
+
+        body = response.css('#abody.cms-body.detail').getall()
         body = [clean_html(x) for x in body]
         body = [re.sub('<table.+?</table>', '', x, flags=re.DOTALL)
                 for x in body]
@@ -121,7 +130,7 @@ class ThanhnienSpider(scrapy.Spider):
         body = [re.sub('<div class="imgcaption".+?</div>',
                        '', x, flags=re.DOTALL) for x in body]
         body = [remove_tags(x).strip() for x in body]
-        body = ''.join(body[:-1])
+        body = ''.join(body)
 
         metaDate = response.css('.details__meta .meta time::text').re(
             r'([0-9]{,2}:[0-9]{,2} - [0-9]{,2}\/[0-9]{,2}\/[0-9]{4})')
@@ -130,8 +139,8 @@ class ThanhnienSpider(scrapy.Spider):
             'source': 'ThanhNien',
             'url': response.url,
             'title': extract_with_css('.details__headline::text'),
-            'sapo': metaDescription[0],
+            'sapo': sapo,
             'body': body,
             'cates': response.css('.breadcrumbs span a span::text').getall(),
-            'tags': [x.strip() for x in metaTags[0].split(',')],
+            'tags': tags,
             'publish': datetime.datetime.strptime(metaDate[0], '%H:%M - %d/%m/%Y')}

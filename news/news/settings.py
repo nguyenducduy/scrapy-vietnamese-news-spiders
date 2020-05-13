@@ -70,12 +70,12 @@ ITEM_PIPELINES = {
     'crawlab.pipelines.CrawlabMongoPipeline': 888  # uncomment when use with Crawlab
 }
 # production
-MONGO_URI = 'mongodb://172.19.0.2:27017'
-MONGO_DATABASE = 'corpus'
+# MONGO_URI = 'mongodb://172.18.0.2:27017'
+# MONGO_DATABASE = 'corpus'
 
 # # test
-# MONGO_URI = 'mongodb://localhost:27017'
-# MONGO_DATABASE = 'corpus'
+MONGO_URI = 'mongodb://localhost:27017'
+MONGO_DATABASE = 'corpus'
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

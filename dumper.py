@@ -9,8 +9,8 @@ import time
 t = time.process_time()
 
 DB_NAME = 'corpus'
-COLLECTION_NAME = 'test_news'
-RECORD_PER_PAGE = 10
+COLLECTION_NAME = 'results_news'
+RECORD_PER_PAGE = 100
 
 
 def pagination(page_size, page_num):
@@ -35,7 +35,7 @@ tokenizer = PunktSentenceTokenizer(punkt_param)
 db[COLLECTION_NAME].delete_many({"title": ""})
 
 # open file to write
-with open('corpus.txt', 'a') as myFile:
+with open('corpus_raw.txt', 'a') as myFile:
     # get total doc in collection
     total = db[COLLECTION_NAME].count_documents({})
     total_page = math.ceil(total / RECORD_PER_PAGE)

@@ -55,3 +55,13 @@ export LC_ALL="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
 sudo dpkg-reconfigure locales
 ```
+
+# remove empty line
+
+```
+sed '/^$/d' corpus_raw.txt > corpus.txt
+```
+
+### Test write to txt
+
+- 179631 record in mongo ~ 2.65 minutes ~ 454M

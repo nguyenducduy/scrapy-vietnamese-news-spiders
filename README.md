@@ -9,6 +9,20 @@
 
 ### Development
 
+# Ubuntu
+
+```
+apt install libcurl4-openssl-dev libssl-dev
+```
+
+# NLTK
+
+```
+python
+import nltk
+nltk.download('punkt')
+```
+
 - In terminal export 2 variables
 
 ```
@@ -33,3 +47,11 @@ MONGO_URI = 'mongodb://172.19.0.3:27017'
 - https://vnexpress.net/
 - https://thanhnien.vn/
 - http://antg.cand.com.vn/
+
+### Fix utf8 python locale
+
+```
+export LC_ALL="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
+sudo dpkg-reconfigure locales
+```

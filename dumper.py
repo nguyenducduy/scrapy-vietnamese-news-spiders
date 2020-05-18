@@ -1,11 +1,16 @@
 # -*- coding: utf-8 -*-
 from pymongo import MongoClient
 from pprint import pprint
+import math
 from nltk.tokenize import sent_tokenize
 from nltk.tokenize.punkt import PunktSentenceTokenizer, PunktParameters
+import time
+
+t = time.process_time()
 
 DB_NAME = 'corpus'
 COLLECTION_NAME = 'test_news'
+RECORD_PER_PAGE = 10
 
 
 def pagination(page_size, page_num):
@@ -32,9 +37,15 @@ db[COLLECTION_NAME].delete_many({"title": ""})
 # open file to write
 with open('corpus.txt', 'a') as myFile:
     # get total doc in collection
+    total = db[COLLECTION_NAME].count_documents({})
+    total_page = math.ceil(total / RECORD_PER_PAGE)
 
     # loop paging
-    for item in pagination(5, 1):
-        myFile.write("%s\n" % item['title'])
-        for x in tokenizer.tokenize(item['body']):
-            myFile.write("%s\n" % x)
+    for page in range(1, total_page + 1):
+        for item in pagination(RECORD_PER_PAGE, page):
+            myFile.write("%s\n" % item['title'])
+            for x in tokenizer.tokenize(item['body']):
+                myFile.write("%s\n" % x)
+
+elapsed_time = time.process_time() - t
+print(elapsed_time)

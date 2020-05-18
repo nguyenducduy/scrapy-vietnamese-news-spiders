@@ -3,14 +3,10 @@ import scrapy
 import datetime
 
 
-class VnexpressSpider(scrapy.Spider):
-    name = 'vnexpress'
+class VnexpressFirstPageSpider(scrapy.Spider):
+    name = 'vnexpress_first_page'
     allowed_domains = ['vnexpress.net']
     start_urls = [
-        'https://vnexpress.net/the-gioi/tu-lieu',
-        'https://vnexpress.net/the-gioi/phan-tich',
-        'https://vnexpress.net/the-gioi/nguoi-viet-5-chau',
-        'https://vnexpress.net/the-gioi/cuoc-song-do-day',
         'https://vnexpress.net/the-gioi/quan-su',
         'https://vnexpress.net/kinh-doanh/doanh-nghiep',
         'https://vnexpress.net/kinh-doanh/bat-dong-san',
@@ -71,9 +67,12 @@ class VnexpressSpider(scrapy.Spider):
         'https://vnexpress.net/cuoi/tieu-pham',
         'https://vnexpress.net/thoi-su/giao-thong',
         'https://vnexpress.net/thoi-su/mekong',
-        'https://vnexpress.net/tuyen-dau-chong-dich'
+        'https://vnexpress.net/tuyen-dau-chong-dich',
+        'https://vnexpress.net/the-gioi/tu-lieu',
+        'https://vnexpress.net/the-gioi/phan-tich',
+        'https://vnexpress.net/the-gioi/nguoi-viet-5-chau',
+        'https://vnexpress.net/the-gioi/cuoc-song-do-day'
     ]
-    # exclude goc_nhin, startup, cam_nang, safe_go, tu_van
 
     def parse(self, response):
         top_story_link = response.css(
@@ -83,15 +82,6 @@ class VnexpressSpider(scrapy.Spider):
         detail_links = response.css(
             '.item-news-common > .title-news > a::attr(href)')
         yield from response.follow_all(detail_links, self.parse_detail)
-
-        # test next_page
-        # next_page = response.css('.next-page::attr(href)').get()
-        # if next_page == '/the-gioi/quan-su-p2':
-        #     yield response.follow(next_page, self.parse)
-
-        # follow all pagination links
-        pagination_links = response.css('.next-page::attr(href)')
-        yield from response.follow_all(pagination_links, self.parse)
 
     def parse_detail(self, response):
         def extract_with_css(query):

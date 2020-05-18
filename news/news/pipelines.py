@@ -3,7 +3,6 @@
 import logging
 import pymongo
 import os
-from nltk.tokenize import sent_tokenize, word_tokenize
 
 
 class MongoPipeline(object):
@@ -31,13 +30,12 @@ class MongoPipeline(object):
         dup_check = self.db[self.collection_name].find(
             {'url': item['url']}).count()
         if dup_check == 0:
-            item['task_id'] = os.environ.get('CRAWLAB_TASK_ID')
-            item['sentences'] = sent_tokenize(
-                item['title']) + sent_tokenize(item['body'])
+            if item['title'] != '':
+                item['task_id'] = os.environ.get('CRAWLAB_TASK_ID')
+                self.db[self.collection_name].insert_one(dict(item))
 
-            self.db[self.collection_name].insert(dict(item))
-            logging.debug("News added to MongoDB database!")
+                logging.debug("--- ADDED TO DB ---")
         else:
-            logging.debug("News exists!")
+            logging.debug("--- EXISTED ---")
 
         return item

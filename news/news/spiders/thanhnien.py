@@ -97,10 +97,10 @@ class ThanhnienSpider(scrapy.Spider):
         yield from response.follow_all(detail_links, self.parse_detail)
 
         NEXT_PAGE = response.css(
-            '#paging.pag ul > li.active + li > a::text').get()
-        if int(NEXT_PAGE) < 100:
+            '#paging ul > li.active + li > a::text').get()
+        if NEXT_PAGE != None and int(NEXT_PAGE) < 100:
             pagination_links = response.css(
-                '#paging.pag ul > li.active + li > a::attr(href)')
+                '#paging ul > li.active + li > a::attr(href)')
             yield from response.follow_all(pagination_links, self.parse)
 
     def parse_detail(self, response):
@@ -134,6 +134,10 @@ class ThanhnienSpider(scrapy.Spider):
 
         metaDate = response.css('.details__meta .meta time::text').re(
             r'([0-9]{,2}:[0-9]{,2} - [0-9]{,2}\/[0-9]{,2}\/[0-9]{4})')
+        if len(metaDate) > 0:
+            date = metaDate[0]
+        else:
+            date = ''
 
         yield {
             'source': 'ThanhNien',
@@ -143,4 +147,5 @@ class ThanhnienSpider(scrapy.Spider):
             'body': body,
             'cates': response.css('.breadcrumbs span a span::text').getall(),
             'tags': tags,
-            'publish': datetime.datetime.strptime(metaDate[0], '%H:%M - %d/%m/%Y')}
+            'publish': date
+        }

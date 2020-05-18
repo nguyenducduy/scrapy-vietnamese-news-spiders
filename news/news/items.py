@@ -20,4 +20,3 @@ class NewsItem(scrapy.Item):
     keywords = scrapy.Field()
     tags = scrapy.Field()
     cates = scrapy.Field()
-    sentences = scrapy.Field()

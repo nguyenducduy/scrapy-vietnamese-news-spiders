@@ -34,7 +34,7 @@ class MongoPipeline(object):
                 item['task_id'] = os.environ.get('CRAWLAB_TASK_ID')
                 self.db[self.collection_name].insert_one(dict(item))
 
-                logging.debug("--- ADDED TO DB ---")
+                logging.debug("--- ADDED ---")
         else:
             logging.debug("--- EXISTED ---")
 

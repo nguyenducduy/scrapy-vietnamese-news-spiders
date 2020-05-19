@@ -44,7 +44,7 @@ class AtgtSpider(scrapy.Spider):
             'url': response.url,
             'title': extract_with_css('.postTit::text'),
             'sapo': extract_with_css('.descArt::text'),
-            'body': ''.join(response.css('.bodyArt p span::text, .bodyArt p::text').getall()).strip().replace('To view this video please enable JavaScript, and consider upgrading to a web browser that', ''),
+            'body': ''.join(response.css('.bodyArt p span::text, .bodyArt p::text').getall()).strip().replace('To view this video please enable JavaScript, and consider upgrading to a web browser that\n          supports HTML5 video', ''),
             'cates': response.css('.navMn.menu-top > ul > li > a.active::text').getall(),
             'tags': [],
             'publish': date

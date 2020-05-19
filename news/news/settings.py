@@ -27,10 +27,10 @@ ROBOTSTXT_OBEY = True
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY = 3
+DOWNLOAD_DELAY = 1
 # The download delay setting will honor only one of:
-CONCURRENT_REQUESTS_PER_DOMAIN = 1
-CONCURRENT_REQUESTS_PER_IP = 1
+CONCURRENT_REQUESTS_PER_DOMAIN = 16
+CONCURRENT_REQUESTS_PER_IP = 6
 
 # Disable cookies (enabled by default)
 #COOKIES_ENABLED = False
@@ -67,7 +67,7 @@ CONCURRENT_REQUESTS_PER_IP = 1
 ITEM_PIPELINES = {
     #  'news.pipelines.NewsPipeline': 300,
     'news.pipelines.MongoPipeline': 300,
-    # 'crawlab.pipelines.CrawlabMongoPipeline': 888  # uncomment when use with Crawlab
+    # 'crawlab.pipelines.CrawlabMongoPipeline': 400  # uncomment when use with Crawlab
 }
 # production
 # MONGO_URI = 'mongodb://172.18.0.2:27017'

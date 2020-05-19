@@ -66,3 +66,4 @@ sed '/^$/d' corpus_raw.txt > corpus.txt
 - https://thanhnien.vn/
 - http://antg.cand.com.vn/
 - https://www.atgt.vn/
+- https://www.baogiaothong.vn/

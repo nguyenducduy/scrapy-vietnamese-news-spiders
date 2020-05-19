@@ -44,6 +44,7 @@ with open('corpus_raw.txt', 'a') as myFile:
     for page in range(1, total_page + 1):
         for item in pagination(RECORD_PER_PAGE, page):
             myFile.write("%s\n" % item['title'])
+            myFile.write("%s\n" % item['sapo'])
             for x in tokenizer.tokenize(item['body']):
                 myFile.write("%s\n" % x)
 

@@ -8,17 +8,13 @@ from w3lib.html import remove_tags
 
 class AntgSpider(scrapy.Spider):
     name = 'antg'
-    allowed_domains = ['antg.cand.com.vn']
+    allowed_domains = [
+        'antg.cand.com.vn',
+        'antgct.cand.com.vn',
+        'vnca.cand.com.vn',
+        'cstc.cand.com.vn'
+    ]
     start_urls = [
-        'http://antg.cand.com.vn/su-kien-binh-luan-antg/',
-        'http://antg.cand.com.vn/hau-truong/',
-        'http://antg.cand.com.vn/Kinh-te-Van-hoa-The-thao/',
-        'http://antg.cand.com.vn/ho-so-mat/',
-        'http://antg.cand.com.vn/phong-su/',
-        'http://antg.cand.com.vn/ho-so-interpol/',
-        'http://antg.cand.com.vn/vu-an-noi-tieng/',
-        'http://antg.cand.com.vn/tu-lieu-antg/',
-        'http://antg.cand.com.vn/do-day/',
         'http://antgct.cand.com.vn/Chuyen-de/',
         'http://antgct.cand.com.vn/So-tay/',
         'http://antgct.cand.com.vn/Khoa-hoc-Van-Minh/',
@@ -44,7 +40,16 @@ class AntgSpider(scrapy.Spider):
         'http://cstc.cand.com.vn/the-gioi-ma-tuy/',
         'http://cstc.cand.com.vn/noi-dau-so-phan/',
         'http://cstc.cand.com.vn/the-gioi-di-thuong/',
-        'http://cstc.cand.com.vn/goc-khuat-doi-nguoi/'
+        'http://cstc.cand.com.vn/goc-khuat-doi-nguoi/',
+        'http://antg.cand.com.vn/su-kien-binh-luan-antg/',
+        'http://antg.cand.com.vn/hau-truong/',
+        'http://antg.cand.com.vn/Kinh-te-Van-hoa-The-thao/',
+        'http://antg.cand.com.vn/ho-so-mat/',
+        'http://antg.cand.com.vn/phong-su/',
+        'http://antg.cand.com.vn/ho-so-interpol/',
+        'http://antg.cand.com.vn/vu-an-noi-tieng/',
+        'http://antg.cand.com.vn/tu-lieu-antg/',
+        'http://antg.cand.com.vn/do-day/',
     ]
 
     def parse(self, response):
@@ -67,7 +72,7 @@ class AntgSpider(scrapy.Spider):
         date = response.css('.detail-timer::text').get().strip()
         date = datetime.datetime.strptime(date, '%H:%M %d/%m/%Y')
 
-        yield {
+        return {
             'source': 'Antg',
             'url': response.url,
             'title': extract_with_css('.detail-title::text'),

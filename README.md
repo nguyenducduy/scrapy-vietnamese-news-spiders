@@ -42,12 +42,6 @@ nltk.download('punkt')
 MONGO_URI = 'mongodb://172.19.0.3:27017'
 ```
 
-### Sites
-
-- https://vnexpress.net/
-- https://thanhnien.vn/
-- http://antg.cand.com.vn/
-
 ### Fix utf8 python locale
 
 ```
@@ -65,3 +59,10 @@ sed '/^$/d' corpus_raw.txt > corpus.txt
 ### Test write to txt
 
 - 179631 record in mongo ~ 2.65 minutes ~ 454M
+
+### Sites crawled
+
+- https://vnexpress.net/
+- https://thanhnien.vn/
+- http://antg.cand.com.vn/
+- https://www.atgt.vn/

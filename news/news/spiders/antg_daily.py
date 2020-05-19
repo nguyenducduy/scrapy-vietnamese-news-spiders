@@ -8,7 +8,12 @@ from w3lib.html import remove_tags
 
 class AntgDailySpider(scrapy.Spider):
     name = 'antg_daily'
-    allowed_domains = ['antg.cand.com.vn']
+    allowed_domains = [
+        'antg.cand.com.vn',
+        'antgct.cand.com.vn',
+        'vnca.cand.com.vn',
+        'cstc.cand.com.vn'
+    ]
     start_urls = [
         'http://antg.cand.com.vn/su-kien-binh-luan-antg/',
         'http://antg.cand.com.vn/hau-truong/',
@@ -63,7 +68,7 @@ class AntgDailySpider(scrapy.Spider):
         date = response.css('.detail-timer::text').get().strip()
         date = datetime.datetime.strptime(date, '%H:%M %d/%m/%Y')
 
-        yield {
+        return {
             'source': 'Antg',
             'url': response.url,
             'title': extract_with_css('.detail-title::text'),

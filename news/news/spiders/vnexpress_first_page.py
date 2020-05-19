@@ -75,9 +75,10 @@ class VnexpressFirstPageSpider(scrapy.Spider):
     ]
 
     def parse(self, response):
-        top_story_link = response.css(
-            '.item-news.full-thumb.article-topstory a::attr(href)')
-        yield from response.follow_all(top_story_link, self.parse_detail)
+        top_link = response.css(
+            '.item-news.full-thumb.article-topstory a::attr(href)').get()
+        request = scrapy.Request(top_link, callback=self.parse_detail)
+        yield request
 
         detail_links = response.css(
             '.item-news-common > .title-news > a::attr(href)')
@@ -101,12 +102,12 @@ class VnexpressFirstPageSpider(scrapy.Spider):
         else:
             date = ''
 
-        yield {
+        return {
             'source': 'VNExpress',
             'url': response.url,
             'title': extract_with_css('.title-detail::text'),
             'sapo': extract_with_css('.description::text'),
-            'body': ''.join(response.css('.Normal::text').getall()[:-2]),
+            'body': ''.join(response.css('.Normal::text').getall()[:-2]).strip(),
             'cates': response.css(
                 '.header-content.width_common > ul > li a::text').getall(),
             'tags': tags,

@@ -139,7 +139,7 @@ class ThanhnienSpider(scrapy.Spider):
         else:
             date = ''
 
-        yield {
+        return {
             'source': 'ThanhNien',
             'url': response.url,
             'title': extract_with_css('.details__headline::text'),

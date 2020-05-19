@@ -128,7 +128,7 @@ class ThanhnienFirstPageSpider(scrapy.Spider):
         metaDate = response.css('.details__meta .meta time::text').re(
             r'([0-9]{,2}:[0-9]{,2} - [0-9]{,2}\/[0-9]{,2}\/[0-9]{4})')
 
-        yield {
+        return {
             'source': 'ThanhNien',
             'url': response.url,
             'title': extract_with_css('.details__headline::text'),

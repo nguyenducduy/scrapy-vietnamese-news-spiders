@@ -70,7 +70,8 @@ sed '/^$/d' corpus_raw.txt > corpus.txt
 - https://bizlive.vn/ (pending)
 - https://www.bienphong.com.vn/ (pending)
 - https://bnews.vn/
-- http://baovanhoa.vn/
+- http://baovanhoa.vn/, http://vanhoaonline.vn/
+- https://www.moit.gov.vn
 
 ###
 

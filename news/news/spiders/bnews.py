@@ -23,7 +23,7 @@ class BnewsSpider(scrapy.Spider):
 
         pagination_links = [response.css(
             '.pagination-main>ul>li>a::attr(href)')[-1]]
-        yield from response.follow_all(pagination_links, self.parse)
+        yield from response.follow_all([pagination_links], self.parse)
 
     def parse_detail(self, response):
         def extract_with_css(query):

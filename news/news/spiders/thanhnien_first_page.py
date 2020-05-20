@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 import scrapy
 import datetime
-import re
-from lxml.html.clean import clean_html
-from w3lib.html import remove_tags
+from news.helper import bodyCleaner
 
 
 class ThanhnienFirstPageSpider(scrapy.Spider):
@@ -114,16 +112,7 @@ class ThanhnienFirstPageSpider(scrapy.Spider):
         else:
             tags = ''
 
-        body = response.css('#abody.cms-body.detail').getall()
-        body = [clean_html(x) for x in body]
-        body = [re.sub('<table.+?</table>', '', x, flags=re.DOTALL)
-                for x in body]
-        body = [re.sub('<div class="pswp-content__caption".+?</div>',
-                       '', x, flags=re.DOTALL) for x in body]
-        body = [re.sub('<div class="imgcaption".+?</div>',
-                       '', x, flags=re.DOTALL) for x in body]
-        body = [remove_tags(x).strip() for x in body]
-        body = ''.join(body)
+        body = bodyCleaner(response.css('#abody.cms-body.detail').getall())
 
         metaDate = response.css('.details__meta .meta time::text').re(
             r'([0-9]{,2}:[0-9]{,2} - [0-9]{,2}\/[0-9]{,2}\/[0-9]{4})')

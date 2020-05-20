@@ -77,8 +77,7 @@ class VnexpressFirstPageSpider(scrapy.Spider):
     def parse(self, response):
         top_link = response.css(
             '.item-news.full-thumb.article-topstory a::attr(href)').get()
-        request = scrapy.Request(top_link, callback=self.parse_detail)
-        yield request
+        yield scrapy.Request(top_link, callback=self.parse_detail)
 
         detail_links = response.css(
             '.item-news-common > .title-news > a::attr(href)')

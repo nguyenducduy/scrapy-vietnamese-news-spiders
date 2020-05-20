@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 import scrapy
 import datetime
-from lxml.html.clean import clean_html
-from w3lib.html import remove_tags
+from news.helper import bodyCleaner
 
 
 class BaogiaothongSpider(scrapy.Spider):
@@ -69,13 +68,7 @@ class BaogiaothongSpider(scrapy.Spider):
         def extract_with_css(query):
             return response.css(query).get(default='').strip()
 
-        body = response.css('.bodyArt p').getall()
-        body = [clean_html(x) for x in body]
-        body = [remove_tags(x).strip() for x in body]
-        body = ''.join(body).replace(
-            'To view this video please enable JavaScript, and consider upgrading to a web browser that\n          supports HTML5 video', '')
-        body = body.replace('Xem thêm video:', '')
-        body = body.replace('Xem chi tiết tại đây', '')
+        body = bodyCleaner(response.css('.bodyArt p').getall())
 
         metaDate = response.css('.dateArt::text').get()
         try:

@@ -71,13 +71,15 @@ sed '/^$/d' corpus_raw.txt > corpus.txt
 - https://www.bienphong.com.vn/ (pending)
 - https://bnews.vn/
 - http://baovanhoa.vn/, http://vanhoaonline.vn/
-- https://www.moit.gov.vn
+- http://cand.com.vn/
+- https://nhandan.com.vn/
+- http://cstc.cand.com.vn/
+- http://cartimes.vn/
 
 ###
 
 ```
- Bộ Công thương,
-Bộ GTVT, Bộ KHĐT, Bộ Ngoại Giao, Bộ Nội Vụ, Bộ Tài Chính, Bộ VHTTDL, CAND, CAĐN, CL&XH, CSTC,
+
 Cartimes, Chính Phủ, Công Luận, Công Lý, Công Thương, DNVN, Doanh Nghiệp, Dân Sinh, Dân Việt,
 Em Đẹp, GD&TĐ, GTVT, Gia Đình Mới, Gia Đình VN, Giao Thông, Giáo Dục VN, GĐ&XH, Hà Nội Mới,
 Hà Tĩnh, Hải Quan, ICTNews, Infonet, KTNT, KTĐT, Khỏe 365, Khỏe Plus, Khỏe Plus 24h, Kiến Thức,

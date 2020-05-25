@@ -99,7 +99,7 @@ class ThanhnienFirstPageSpider(scrapy.Spider):
             return response.css(query).get(default='').strip()
 
         metaDescription = response.css(
-            'meta[name="description"]').re(r'content="(.*)"')
+            'meta[name="description"]').re(r'content="(.*)">')
 
         if len(metaDescription) > 0:
             sapo = metaDescription[0]
@@ -116,6 +116,10 @@ class ThanhnienFirstPageSpider(scrapy.Spider):
 
         metaDate = response.css('.details__meta .meta time::text').re(
             r'([0-9]{,2}:[0-9]{,2} - [0-9]{,2}\/[0-9]{,2}\/[0-9]{4})')
+        if len(metaDate) > 0:
+            date = datetime.datetime.strptime(metaDate[0], '%H:%M - %d/%m/%Y')
+        else:
+            date = ''
 
         return {
             'source': 'ThanhNien',
@@ -125,4 +129,5 @@ class ThanhnienFirstPageSpider(scrapy.Spider):
             'body': body,
             'cates': response.css('.breadcrumbs span a span::text').getall(),
             'tags': tags,
-            'publish': datetime.datetime.strptime(metaDate[0], '%H:%M - %d/%m/%Y')}
+            'publish': date
+        }

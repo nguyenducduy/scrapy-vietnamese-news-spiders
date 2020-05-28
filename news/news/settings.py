@@ -62,12 +62,14 @@ CONCURRENT_REQUESTS_PER_IP = 6
 #    'scrapy.extensions.telnet.TelnetConsole': None,
 # }
 
+
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
     #  'news.pipelines.NewsPipeline': 300,
     'news.pipelines.MongoPipeline': 300,
-    # 'crawlab.pipelines.CrawlabMongoPipeline': 400  # uncomment when use with Crawlab
+    # 'scrapy_redis.pipelines.RedisPipeline': 400 # store items crawled in redis
+    # 'crawlab.pipelines.CrawlabMongoPipeline': 500  # uncomment when use with Crawlab
 }
 # production
 # MONGO_URI = 'mongodb://172.18.0.2:27017'
@@ -76,6 +78,12 @@ ITEM_PIPELINES = {
 # # test
 MONGO_URI = 'mongodb://localhost:27017'
 MONGO_DATABASE = 'corpus'
+
+# redis for dedeup filter and resume crawler
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
+SCHEDULER = "scrapy_redis.scheduler.Scheduler"
+DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

@@ -86,13 +86,19 @@ db.getCollection('results_news').createIndex({ source: 1 })
 - http://baochinhphu.vn/
 - https://congluan.vn/
 - https://congly.vn/
+- https://congthuong.vn/
+- https://doanhnghiepvn.vn/
+- http://baodansinh.vn/ (pending)
+- https://danviet.vn/ (pending)
+- https://giaoducthoidai.vn/ (pending)
+- https://www.giadinhmoi.vn/ (pending)
+- http://giadinh.net.vn/
 
 ###
 
 ```
 
-Công Thương, DNVN, Doanh Nghiệp, Dân Sinh, Dân Việt, \
-Em Đẹp, GD&TĐ, GTVT, Gia Đình Mới, Gia Đình VN, Giao Thông, Giáo Dục VN, GĐ&XH, Hà Nội Mới, \
+Gia Đình VN, Giao Thông, Giáo Dục VN, GĐ&XH, Hà Nội Mới, \
 Hà Tĩnh, Hải Quan, ICTNews, Infonet, KTNT, KTĐT, Khỏe 365, Khỏe Plus, Khỏe Plus 24h, Kiến Thức, \
 Kiểm Sát, Kiểm sát, Kỷ Nguyên Số, Lao Động, LĐTĐ, MT&CS, Mặt Trận, Một Thế Giới, NCĐT, NLĐ, \
 Nghe Nhìn VN, Nghệ An, Ngày Nay, Người Làm Báo, Người Tiêu Dùng, Người Đô Thị, Người Đưa Tin, \

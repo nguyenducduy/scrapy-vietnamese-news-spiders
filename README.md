@@ -30,12 +30,6 @@ nltk.download('punkt')
 - export CRAWLAB_TASK_ID=random
 ```
 
-- Comment line
-
-```
-'crawlab.pipelines.CrawlabMongoPipeline': 888
-```
-
 - Change IP in mongo uri to docker mongo IP
 
 ```
@@ -93,13 +87,19 @@ db.getCollection('results_news').createIndex({ source: 1 })
 - https://giaoducthoidai.vn/ (pending)
 - https://www.giadinhmoi.vn/ (pending)
 - http://giadinh.net.vn/
+- https://giaoduc.net.vn/ (pending)
+- http://www.hanoimoi.com.vn/ (pending)
+- https://baohatinh.vn/ (pending)
+- https://vietnamnet.vn/ (pending)
+- https://ictnews.vietnamnet.vn/ (pending)
+- https://infonet.vietnamnet.vn/ (pending)
+- https://kinhtenongthon.vn/ (pending)
+- http://kinhtedothi.vn/
 
 ###
 
 ```
-
-Gia Đình VN, Giao Thông, Giáo Dục VN, GĐ&XH, Hà Nội Mới, \
-Hà Tĩnh, Hải Quan, ICTNews, Infonet, KTNT, KTĐT, Khỏe 365, Khỏe Plus, Khỏe Plus 24h, Kiến Thức, \
+Khỏe 365, Khỏe Plus, Khỏe Plus 24h, Kiến Thức, \
 Kiểm Sát, Kiểm sát, Kỷ Nguyên Số, Lao Động, LĐTĐ, MT&CS, Mặt Trận, Một Thế Giới, NCĐT, NLĐ, \
 Nghe Nhìn VN, Nghệ An, Ngày Nay, Người Làm Báo, Người Tiêu Dùng, Người Đô Thị, Người Đưa Tin, \
 Nhân Dân, Nông Nghiệp, NĐ&ĐS, PC World, PL&XH, PLO, PNNews, PNSK, PetroTimes, Pháp Luật Net, \

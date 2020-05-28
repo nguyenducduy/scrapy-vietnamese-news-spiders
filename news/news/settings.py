@@ -79,11 +79,11 @@ ITEM_PIPELINES = {
 MONGO_URI = 'mongodb://localhost:27017'
 MONGO_DATABASE = 'corpus'
 
-# redis for dedeup filter and resume crawler
-REDIS_HOST = 'localhost'
-REDIS_PORT = 6379
-SCHEDULER = "scrapy_redis.scheduler.Scheduler"
-DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
+# redis for dedeup filter and resume crawler (disable when using scrapy shell)
+# REDIS_HOST = 'localhost'
+# REDIS_PORT = 6379
+# SCHEDULER = "scrapy_redis.scheduler.Scheduler"
+# DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

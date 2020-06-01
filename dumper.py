@@ -9,7 +9,7 @@ import time
 t = time.process_time()
 
 DB_NAME = 'corpus'
-COLLECTION_NAME = 'results_news'
+COLLECTION_NAME = 'test_news'
 RECORD_PER_PAGE = 100
 
 
@@ -45,7 +45,7 @@ with open('corpus_raw.txt', 'a') as myFile:
         for item in pagination(RECORD_PER_PAGE, page):
             myFile.write("%s\n" % item['title'])
             myFile.write("%s\n" % item['sapo'])
-            for x in tokenizer.tokenize(item['body']):
+            for x in tokenizer.tokenize(str(item['body'])):
                 myFile.write("%s\n" % x)
 
 elapsed_time = time.process_time() - t

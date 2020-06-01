@@ -71,7 +71,23 @@ class VnexpressSpider(scrapy.Spider):
         'https://vnexpress.net/cuoi/tieu-pham',
         'https://vnexpress.net/thoi-su/giao-thong',
         'https://vnexpress.net/thoi-su/mekong',
-        'https://vnexpress.net/tuyen-dau-chong-dich'
+        'https://vnexpress.net/tuyen-dau-chong-dich',
+        'https://vnexpress.net/thoi-su',
+        'https://vnexpress.net/goc-nhin',
+        'https://vnexpress.net/the-gioi',
+        'https://vnexpress.net/kinh-doanh',
+        'https://vnexpress.net/giai-tri',
+        'https://vnexpress.net/the-thao',
+        'https://vnexpress.net/phap-luat',
+        'https://vnexpress.net/giao-duc',
+        'https://vnexpress.net/suc-khoe',
+        'https://vnexpress.net/doi-song',
+        'https://vnexpress.net/du-lich',
+        'https://vnexpress.net/khoa-hoc',
+        'https://vnexpress.net/so-hoa',
+        'https://vnexpress.net/oto-xe-may',
+        'https://vnexpress.net/y-kien',
+        'https://vnexpress.net/tam-su'
     ]
     # exclude goc_nhin, startup, cam_nang, safe_go, tu_van
 

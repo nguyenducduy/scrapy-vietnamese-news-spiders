@@ -77,9 +77,9 @@ class KinhtedothiSpider(scrapy.Spider):
 
     def parse_detail(self, response):
         metaTitle = response.css(
-            'meta[property="og:title"]').re(r'content="(.*)"')
+            'meta[property="og:title"]').re(r'content="(.*)">')
         metaDesc = response.css(
-            'meta[name="description"]').re(r'content="(.*)"')
+            'meta[name="description"]').re(r'content="(.*)">')
 
         return {
             'source': response.url.split("/")[2],

@@ -47,7 +47,11 @@ sudo dpkg-reconfigure locales
 # remove empty line
 
 ```
-sed '/^$/d' corpus_raw.txt > corpus.txt
+sed '/^$/d' corpus_raw.txt > corpus.txt && rm -rf corpus_raw.txt
+```
+
+```
+python dumper.py && sed '/^$/d' corpus_raw.txt > corpus.txt && rm -rf corpus_raw.txt
 ```
 
 # create index
@@ -95,12 +99,14 @@ db.getCollection('results_news').createIndex({ source: 1 })
 - https://infonet.vietnamnet.vn/ (pending)
 - https://kinhtenongthon.vn/ (pending)
 - http://kinhtedothi.vn/
+- https://kienthuc.net.vn
+- https://kynguyenso.plo.vn/
 
 ###
 
 ```
-Khỏe 365, Khỏe Plus, Khỏe Plus 24h, Kiến Thức, \
-Kiểm Sát, Kiểm sát, Kỷ Nguyên Số, Lao Động, LĐTĐ, MT&CS, Mặt Trận, Một Thế Giới, NCĐT, NLĐ, \
+Khỏe Plus, Khỏe Plus 24h \
+Kiểm Sát, LĐTĐ, MT&CS, Mặt Trận, Một Thế Giới, NCĐT, NLĐ, \
 Nghe Nhìn VN, Nghệ An, Ngày Nay, Người Làm Báo, Người Tiêu Dùng, Người Đô Thị, Người Đưa Tin, \
 Nhân Dân, Nông Nghiệp, NĐ&ĐS, PC World, PL&XH, PLO, PNNews, PNSK, PetroTimes, Pháp Luật Net, \
 Pháp Luật Plus, Pháp Luật VN, Phụ Nữ VN, Quốc Hội, Quốc Hội TV, QĐND, SGGP, SGĐT, SaoStar, \

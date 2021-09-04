@@ -102,7 +102,7 @@ treq==20.4.1
 Twisted==20.3.0
 tzlocal==2.1
 u-msgpack-python==2.6.0
-urllib3==1.25.9
+urllib3==1.26.5
 validators==0.15.0
 w3lib==1.21.0
 wcwidth==0.1.9

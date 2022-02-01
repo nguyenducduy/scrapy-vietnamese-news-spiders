@@ -98,7 +98,7 @@ testpath==0.4.4
 tornado==4.5.3
 tqdm==4.46.0
 traitlets==4.3.3
-treq==20.4.1
+treq==22.1.0
 Twisted==20.3.0
 tzlocal==2.1
 u-msgpack-python==2.6.0
